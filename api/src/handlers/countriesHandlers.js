@@ -10,10 +10,12 @@ const createAllCountries = async (req,res)=>{
 }
 
 const getCountriesHandler = async (req,res)=>{
-    let {order} = req.query;
-    if (!order) order = 'ASC'
+    let {order, name, orderBy, continents, activity} = req.query;
+    if (!order) order = 'ASC';
+    if (!orderBy) orderBy = 'name';
+    if (!continents) continents = 'all';
     try {
-        const countries = await getCountries(order);
+        const countries = await getCountries(order, orderBy, name, continents, activity);
         res.status(200).json(countries)
   } catch (error) {
       res.status(400).json({error: error.message});
@@ -35,11 +37,4 @@ const getCountryIdHandler = async (req,res)=>{
     }
 }
 
-const getCountryNameHandler = (req,res)=>{
-    try {
-        const {name} = req.params;
-        res.status(200).send(`NDY: devuelve la info del pais: ${name}`)
-    } catch (error) {}
-}
-
-module.exports = {getCountriesHandler,getCountryIdHandler,getCountryNameHandler, createAllCountries}
+module.exports = {getCountriesHandler,getCountryIdHandler,createAllCountries}

@@ -4,9 +4,11 @@ const actRouter = Router();
 
 const {
     getActivitiesHandler, 
-    createActivityHandler } = require('../handlers/activitiesHandlers')
+    createActivityHandler,
+    activitiesInitHandler } = require('../handlers/activitiesHandlers')
 
-actRouter.get('/', getActivitiesHandler)
-actRouter.post('/', createActivityHandler)
+actRouter.get('/', getActivitiesHandler);
+actRouter.post('/', createActivityHandler);
+actRouter.post('/bulk', activitiesInitHandler);
 
 module.exports = actRouter
