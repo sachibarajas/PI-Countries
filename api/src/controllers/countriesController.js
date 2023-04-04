@@ -23,7 +23,7 @@ const cleanArray = (array)=>
         }
     })
 
-const queryCreator = (name, continents, activity)=>{
+const queryCreator = async (name, continents, activity)=>{
     let query = {};
     if (continents!== 'all') {
         const arrContinents = continents.split(' ')
@@ -49,15 +49,15 @@ const queryCreator = (name, continents, activity)=>{
     }
 
     if (activity) {
-        query ={
+       const act = await Activity.findOne({where: {name: activity}});
+       const countries = await act.getCountries({attributes:['id']});
+       const cleanArr = countries.map(country =>{
+        return country.dataValues.id
+       })
+       query = {
             ...query,
-            include:[{
-                model: Activity,
-                through: {
-                    where: {name: activity}
-                }
-            }]
-        }
+            id:{[Op.or]: cleanArr}
+       }
     }
     return query;
 }
@@ -70,9 +70,8 @@ const fillDataBase = async()=>{
 }
 
 const getCountries = async(order, orderBy, name, continents, activity)=>{
-   
     const countries = await Country.findAll({
-        where: queryCreator(name,continents,activity),
+        where: await queryCreator(name,continents,activity),
         order:[[orderBy, order]]
     });
     // console.log(countries);
@@ -83,6 +82,13 @@ const getCountrybyId = async (id)=>{
     const country= await Country.findAll({
         where:{
             id: {[Op.eq]: id}
+        },
+        include: {
+            model: Activity,
+            attributes:['id','name'],
+            through: {
+                attributes:[]
+            }
         }
     });
     return country;

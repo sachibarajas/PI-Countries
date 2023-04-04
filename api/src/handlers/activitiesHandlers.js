@@ -11,9 +11,9 @@ const getActivitiesHandler= async (req,res)=>{
 }
 
 const createActivityHandler =async (req,res)=>{
-    const {name,season,difficulty,duration} = req.body;
+    const {name,season,difficulty,duration, countries} = req.body;
     try {
-        const newActivity = await createActivity(name,season,difficulty,duration)
+        const newActivity = await createActivity(name,season,difficulty,duration, countries)
         res.status(201).json(newActivity)
         
     } catch (error) {
