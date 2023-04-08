@@ -66,7 +66,7 @@ const fillDataBase = async()=>{
     const rawCountries = (await axios.get('https://restcountries.com/v3/all')).data;
     const clearCountries = cleanArray(rawCountries);
     await Country.bulkCreate(clearCountries);
-    console.log(`Data Base Loaded with ${clearCountries.length} rows`);
+    console.log(`Data Base Loaded with ${clearCountries.length} countries`);
 }
 
 const getCountries = async(order, orderBy, name, continents, activity)=>{

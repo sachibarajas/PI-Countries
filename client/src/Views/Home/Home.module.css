@@ -1,0 +1,17 @@
+.Home{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.planeImg{
+    width: 200px;
+    position: absolute;
+    top: 90px;
+    left: 45px;
+}
+
+.divLine{
+    border: darkgray solid 1px;
+}

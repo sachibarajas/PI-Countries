@@ -1,0 +1,32 @@
+.Footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.currentPage{
+    width: fit-content;
+    height: fit-content ;
+    border: 2px solid #68806B;
+    border-radius: 15px;
+    padding: 4px 15px;
+    margin: 5px;
+    color: darkgray;
+    font-size: 15px;
+}
+
+.Pages{
+    width: fit-content;
+    background-color: #9cbc9f;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin: 5px;
+    color: white;
+    font-size: 15px;
+}
+
+.Arrow{
+    width: 30px;
+    border-radius: 50%;
+}
