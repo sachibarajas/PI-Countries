@@ -1,9 +1,10 @@
 import s from './Country.module.css';
 import backGround from '../../../Assets/Images/countryCard2.png';
-import dummyFlag from '../../../Assets/Images/dummyflag.png';
+
 import plusBtn from '../../../Assets/Images/plusBtn.png'
 
-const Country =()=>{
+const Country =(props)=>{
+    const {flag, name, continent} = props;
     return(
         <div className={s.Country}>
             <img src={backGround} alt="" className={s.backGroundImg} />
@@ -11,10 +12,10 @@ const Country =()=>{
                 <p className={s.Tag}>COUNTRY</p>
                 <hr className={s.divLine}/>
             </div >
-            <img src={dummyFlag} alt="" className={s.Flag}/>
+            <img src={flag} alt="" className={s.Flag}/>
             <div className={s.Info}>
-                <p className={s.Name}>Colombia</p>
-                <p className={s.Continent}>Americas</p>
+                <p className={s.Name}>{name}</p>
+                <p className={s.Continent}>{continent}</p>
                 <div className={s.moreInfo}>
                     <img src={plusBtn} alt="" className={s.plusBtn}/>
                     <p className={s.infoWd}>info</p>

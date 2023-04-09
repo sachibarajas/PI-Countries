@@ -1,8 +1,13 @@
-
+import LeftPanel from "../../Components/FormView/LeftPanel/LeftPanel";
+import RightPanel from "../../Components/FormView/RightPanel/RightPanel";
+import s from './Form.module.css'
 const Form = ()=>{
 
     return(
-        <h2>Vista de Form</h2>
+        <div className={s.Form}>
+            <LeftPanel/>
+            <RightPanel/>
+        </div>
     )
 }
 

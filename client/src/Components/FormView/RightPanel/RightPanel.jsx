@@ -1,13 +1,14 @@
 import s from './RightPanel.module.css';
 import NavBar from '../../NavBar/NavBar';
-import CountriesContainer from '../CountriesContainer/CountriesContainer';
 import Footer from '../../Footer/Footer';
+import ActivitiesContainer from '../ActivitiesContainer/ActivitiesContainer';
 
-const RightPanel =()=>{
+const RightPanel = ()=>{
+
     return(
-        <div className={s.rightPanel}>
+        <div className={s.RightPanel}>
             <NavBar/>
-            <CountriesContainer/>
+            <ActivitiesContainer/>
             <Footer/>
         </div>
     )

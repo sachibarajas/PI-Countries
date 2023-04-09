@@ -1,0 +1,102 @@
+
+.LeftPanel{
+    /* border: 1px solid black; */
+    width: 30%; 
+    padding: 70px 10px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.titleImg{
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.Form{
+    /* border: 1px dashed green; */
+    display: flex;
+    flex-direction: column;
+    align-content:baseline;
+    position: relative;
+    height: 80%;
+}
+
+.Input{
+    /* border: 1px dashed burlywood; */
+    display: flex;
+    align-items: baseline;
+    margin: 5px 10px 20px 10px;
+    justify-content: space-between;
+}
+
+.InputCountries{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin: 5px 10px 0px 0px;
+    justify-content: space-around;
+}
+
+.Label{
+    font-family: HelveticaLTStd-cond;
+    font-size: 15px;
+}
+
+.txtInput{
+    width: 70%;
+    background-color: transparent;
+    border:darkgray 1px solid;
+    border-radius: 5px;
+    height: 20px;
+}
+
+.radioButtons{
+    /* border: 1px red dashed; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px 10px 20px 10px;
+    justify-content: space-between;
+}
+
+.Options{
+    display: flex;
+    flex-direction: row;
+}
+
+.radioOption{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 10px 0px 10px;
+}
+
+.addBtn{
+    width: fit-content;
+}
+
+.countriesPanel{
+    width: 91%;
+    height: 25%;
+    background-color: white;
+    border: 1px darkgray solid;
+    margin-bottom: 20px;
+    margin-top: 7px;
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.createBtn{
+    position: absolute;
+    bottom: 6.5%;
+    right: 4%;
+    width: 30%;
+    align-self: flex-end;
+}
+
+@font-face {
+    font-family: HelveticaLTStd-cond;
+    font-style: normal;
+    src: url('../../../Assets/fonts/HelveticaLTStd-Cond.otf');
+}

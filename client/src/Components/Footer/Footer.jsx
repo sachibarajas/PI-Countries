@@ -1,6 +1,6 @@
 import s from './Footer.module.css';
-import leftArrow from '../../../Assets/Images/leftArrrow.png';
-import rightArrow from '../../../Assets/Images/rightArrow.png';
+import leftArrow from '../../Assets/Images/leftArrrow.png';
+import rightArrow from '../../Assets/Images/rightArrow.png';
 
 const Footer =()=>{
     return(

@@ -71,6 +71,7 @@ const fillDataBase = async()=>{
 
 const getCountries = async(order, orderBy, name, continents, activity)=>{
     const countries = await Country.findAll({
+        attributes:['id','name','flag','continent'],
         where: await queryCreator(name,continents,activity),
         order:[[orderBy, order]]
     });

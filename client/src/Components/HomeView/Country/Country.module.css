@@ -1,9 +1,9 @@
 .Country{
-    /* border: 2px black solid; */
+    /* border: 1px black solid; */
     display: flex;
     padding: 10px;
     position: relative;
-    width: 18%;
+    width: 17%;
     height: 45%;
     align-items: center;
     justify-items: center;
@@ -51,8 +51,8 @@
     position: absolute;
     top:19.3%;
     right: 21%;
-    width: 16%;
-    height: 13.5%;
+    width: 16.1%;
+    height: 13.7%;
     filter: sepia(70%);
     border-radius: 50%;
 }
