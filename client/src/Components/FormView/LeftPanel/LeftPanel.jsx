@@ -1,7 +1,20 @@
 import s from './LeftPanel.module.css';
 import titleImg from '../../../Assets/Images/createActivity.png';
 import createBtn from '../../../Assets/Images/createBtn.png';
+import { useState } from 'react';
 const LeftPanel = ()=>{
+
+    const [form,setForm] = useState({
+        name: 'santi',
+        difficulty: '3',
+        duration: 'fuck',
+        season: 'Winter',
+        countries:[]
+    })
+
+    const handleChange = () => {
+
+    }
 
     return(
         <div className={s.LeftPanel}>
@@ -12,7 +25,7 @@ const LeftPanel = ()=>{
                 <form action="">
                     <div className={s.Input}>
                         <label htmlFor="" className={s.Label}>Name: </label>
-                        <input type="text"  className={s.txtInput}/>
+                        <input type="text"  className={s.txtInput} value={form.name}/>
                     </div>
                     
                     <div className={s.radioButtons}>
@@ -20,36 +33,36 @@ const LeftPanel = ()=>{
                         
                         <div className={s.Options}>
                             <div className={s.radioOption}>
-                                <input type="radio" id='option1' name='difficulty' value={1} className={s.Option}/>
+                                <input type="radio" id='option1' name='difficulty' value={parseInt(form.difficulty,10)} className={s.Option}/>
                                 <label for="option1" className={s.Label}>1</label>
                             </div>
                             <div className={s.radioOption}>
-                                <input type="radio" id='option2' name='difficulty' value={2} className={s.Option}/>
+                                <input type="radio" id='option2' name='difficulty' value={parseInt(form.difficulty,10)} className={s.Option}/>
                                 <label for="option1" className={s.Label}>2</label>
                             </div>
                             <div className={s.radioOption}>
-                                <input type="radio" id='option3' name='difficulty' value={3} className={s.Option}/>
+                                <input type="radio" id='option3' name='difficulty' value={parseInt(form.difficulty,10)} className={s.Option}/>
                                 <label for="option1" className={s.Label}>3</label>
                             </div>
                             <div className={s.radioOption}>
-                                <input type="radio" id='option4' name='difficulty' value={4} className={s.Option}/>
+                                <input type="radio" id='option4' name='difficulty' value={parseInt(form.difficulty,10)} className={s.Option}/>
                                 <label for="option1" className={s.Label}>4</label>
                             </div>
                             <div className={s.radioOption}>
-                                <input type="radio" id='option5' name='difficulty' value={5} className={s.Option}/>
+                                <input type="radio" id='option5' name='difficulty' value={parseInt(form.difficulty,10)} className={s.Option}/>
                                 <label for="option1" className={s.Label}>5</label>
                             </div>
                         </div>
                     </div>
 
                     <div className={s.Input}>
-                        <label htmlFor="" className={s.Label}>Duration:     </label>
-                        <input type="text" className={s.txtInput}/>
+                        <label htmlFor="" className={s.Label} >Duration:     </label>
+                        <input type="text" className={s.txtInput} value={form.duration}/>
                     </div>
 
                     <div className={s.Input}>
                         <label htmlFor="" className={s.Label}>Season:     </label>
-                        <select name="season" id="season" className={s.txtInput}>
+                        <select name="season" id="season" className={s.txtInput} value={form.season}>
                             <option value="" disabled selected hidden className={s.Label}>Choose one</option>
                             <option value="Summer" className={s.Label}>Summer</option>
                             <option value="Spring" className={s.Label}>Spring</option>
@@ -61,7 +74,7 @@ const LeftPanel = ()=>{
                     <div className={s.InputCountries}>
                         <div className={s.Input}>
                             <label htmlFor="" className={s.Label}>Countries:  </label>
-                            <input type="text" className={s.txtInput}/>
+                            <input type="text" className={s.txtInput} value={form.countries}/>
                         </div>
                         <button className={s.addBtn}>Add</button>
                     </div>

@@ -1,5 +1,8 @@
 .rightPanel{
-    /* border: 1px black solid; */
+    border: 1px black solid;
     width: 80%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
 }

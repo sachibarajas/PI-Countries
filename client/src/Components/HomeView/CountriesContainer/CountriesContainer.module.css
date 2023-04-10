@@ -1,8 +1,8 @@
 .CountriesContainer{
+    /* border: 1px blue solid; */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-
     margin: 0px ;
     height: 80%;
     padding: 0px 0px 0px 25px;

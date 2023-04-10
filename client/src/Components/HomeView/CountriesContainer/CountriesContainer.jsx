@@ -1,9 +1,10 @@
 import s from './CountriesContainer.module.css';
 import Country from '../Country/Country';
-import dummyCountries from '../../../Assets/countriesDummy.json'
+import { useSelector } from 'react-redux';
 
-const CountriesContainer =()=>{
-    const countries = dummyCountries;
+
+const CountriesContainer =({countries})=>{
+    
     return(
         <div className={s.CountriesContainer}>
             {countries.map(country=>{

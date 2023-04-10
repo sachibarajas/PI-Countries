@@ -71,6 +71,8 @@
 .moreInfo{
     display: flex;
     flex-direction: row;
+    background-color: transparent;
+    border: none;
 }
 
 .Name{
@@ -99,7 +101,24 @@
     font-family: Roboto-Regular;
     color: #666666;
     font-size: 15px;
+    text-decoration: none;
 }
+
+.Link{
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+
+    
+.Link:hover{
+    box-shadow: 5px 5px 3px darkgray;
+}
+
+.infoWd:hover{
+    color: orange;
+}
+
 
 @font-face {
     font-family: RobotoCondensed-Light;

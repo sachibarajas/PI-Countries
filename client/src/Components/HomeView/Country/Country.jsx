@@ -1,10 +1,16 @@
 import s from './Country.module.css';
 import backGround from '../../../Assets/Images/countryCard2.png';
-
 import plusBtn from '../../../Assets/Images/plusBtn.png'
+import { Link } from 'react-router-dom';
+import { getCountry } from '../../../redux/Actions/actions';
+import { useDispatch } from 'react-redux';
 
-const Country =(props)=>{
-    const {flag, name, continent} = props;
+
+
+
+const Country = (props)=>{
+    const {flag, name, continent, id} = props;
+
     return(
         <div className={s.Country}>
             <img src={backGround} alt="" className={s.backGroundImg} />
@@ -16,10 +22,12 @@ const Country =(props)=>{
             <div className={s.Info}>
                 <p className={s.Name}>{name}</p>
                 <p className={s.Continent}>{continent}</p>
-                <div className={s.moreInfo}>
-                    <img src={plusBtn} alt="" className={s.plusBtn}/>
-                    <p className={s.infoWd}>info</p>
-                </div>
+                <Link className={s.Link} to={`/countries/${id}`}>
+                    <button className={s.moreInfo}>
+                        <img src={plusBtn} alt="" className={s.plusBtn}/>
+                        <p className={s.infoWd}>info</p>
+                    </button>
+                </Link>
             </div>
         </div>
     )

@@ -2,13 +2,24 @@ import s from './Footer.module.css';
 import leftArrow from '../../Assets/Images/leftArrrow.png';
 import rightArrow from '../../Assets/Images/rightArrow.png';
 
-const Footer =()=>{
+const Footer =({itemsPerpage, allItems, paginado})=>{
+    const pageNumbers = [];
+    for (let i = 0; i < Math.ceil(allItems/itemsPerpage); i++){
+        pageNumbers.push(i+1);
+    }
     return(
         <div className={s.Footer}>
-            <img src={leftArrow} alt="left" className={s.Arrow}/>
-            <p className={s.currentPage}>12</p>
-            <p className={s.Pages}>out of 25</p>
-            <img src={rightArrow} alt="right" className={s.Arrow}/>
+            <ul className={s.Pages}>
+                { pageNumbers && 
+                pageNumbers.map(number => (
+                <a onClick={() => paginado(number)}className={s.Number} key={number}>
+                    <li className={s.listItem}>
+                        {number}
+                    </li>
+                </a>
+            ))}
+            </ul>
+
         </div>
     )
 }

@@ -1,13 +1,38 @@
 import { GET_COUNTRY, GET_COUNTRIES, GET_ACTIVITIES, FILTER_COUNTRIES } from "./Actions/types";
 
 const initialState={
-    countries: [],
-    activities: [],
-    filteredCountries:[]
+    Countries: [],
+    Activities: [],
+    FilteredCountries:[],
+    Detail:''
 };
 
-const rootReducer = (state=initialState,action)=>{
+const rootReducer = (state=initialState, action)=>{
     switch(action.type){
+        case GET_COUNTRIES:
+            return state={
+                ...state,
+                Countries: action.payload
+            };
+
+        case FILTER_COUNTRIES:
+            return state={
+                ...state,
+                FilteredCountries: action.payload
+            }
+
+        case GET_ACTIVITIES:
+            return state={
+                ...state,
+                Activities: action.payload
+            }
+
+        case GET_COUNTRY:
+            return state={
+                ...state,
+                Detail: action.payload
+            }
+
         default:
             return {...state};
     }

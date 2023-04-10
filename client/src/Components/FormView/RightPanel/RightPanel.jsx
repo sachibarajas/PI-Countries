@@ -2,14 +2,36 @@ import s from './RightPanel.module.css';
 import NavBar from '../../NavBar/NavBar';
 import Footer from '../../Footer/Footer';
 import ActivitiesContainer from '../ActivitiesContainer/ActivitiesContainer';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { filterCountries } from '../../../redux/Actions/actions';
 
 const RightPanel = ()=>{
+    const dispatch = useDispatch();
+    const activities = useSelector(state=>state.Activities);
+    useEffect(()=>{
+        dispatch(filterCountries());
+    },[])
 
+     // paginado
+     const [currentPage, setCurrentPage] = useState(1);
+     const [activitiesPerPage, setActivitiesPerPage] = useState(2);
+     const indexOfLastActivity = currentPage*activitiesPerPage;
+     const indexOfFirstActivity = indexOfLastActivity - activitiesPerPage;
+     const currentActivities = activities.slice(indexOfFirstActivity,indexOfLastActivity);
+ 
+     const paginado = (pageNumber)=>{
+         setCurrentPage(pageNumber);
+     }
     return(
         <div className={s.RightPanel}>
             <NavBar/>
-            <ActivitiesContainer/>
-            <Footer/>
+            <ActivitiesContainer activities={currentActivities}/>
+            <Footer
+                itemsPerpage={activitiesPerPage}
+                allItems={activities.length}
+                paginado={paginado}
+            />
         </div>
     )
 }

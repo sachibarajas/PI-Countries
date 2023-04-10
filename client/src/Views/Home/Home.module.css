@@ -13,5 +13,7 @@
 }
 
 .divLine{
+    align-self: center;
     border: darkgray solid 1px;
+    height: 85%;
 }
