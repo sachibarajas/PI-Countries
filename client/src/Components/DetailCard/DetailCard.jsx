@@ -3,6 +3,8 @@ import NavBar from '../NavBar/NavBar';
 import detailFooter from '../../Assets/Images/detailFooter.png';
 import detailCard from '../../Assets/Images/detailCard.png';
 import { useSelector } from 'react-redux';
+import backImg from '../../Assets/Images/backBtn.png'
+import { Link } from 'react-router-dom';
 
 const DetailCard = ()=>{
 
@@ -23,6 +25,12 @@ const DetailCard = ()=>{
     return(
        <div className={s.Detail}>
             <NavBar/>
+            <a href="http://localhost:3000/home" >
+                <img src={backImg} alt="" className={s.backImg}/>
+            </a>
+            {/* <Link to='/home' className={s.routeLabel}>
+                Back
+            </Link> */}
             <img src={detailFooter} alt="footer" className={s.Footer} />
             <img src={detailCard} alt="detail card" className={s.detailCard}/>
             <img src={flag} alt="flag" className={s.Flag}/>
@@ -59,6 +67,7 @@ const DetailCard = ()=>{
                     <p className={s.Label}>Population: </p>
                     <p className={s.Data}>{population}</p>
                 </div>
+                
                 <div className={s.activityBox}>
                     <p className={s.Label}>Activities: </p>
                     <div className={s.Activities}>
@@ -70,6 +79,7 @@ const DetailCard = ()=>{
                         ))
                         }
                     </div>
+                    
                 </div>
             </div>
        </div>

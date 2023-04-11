@@ -10,6 +10,7 @@ const LeftPanel = ()=>{
 
     const countriesList = useSelector(state=>state.Countries);
     const [country, setCountry] = useState('')
+    const [countriesNames, setCountriesNames] = useState([])
     const [ form, setForm ] = useState({
         name: '',
         difficulty: '',
@@ -23,6 +24,7 @@ const LeftPanel = ()=>{
         difficulty: '',
         duration: '',
         season: '',
+        countries:''
     })
 
     const validate = (state) =>{
@@ -31,10 +33,29 @@ const LeftPanel = ()=>{
         } else {
             setErrors({...errors,name:""})
         }
+        if(state.countries.length = 0){
+            setErrors({...errors, countries:'You need to add at least one country'})
+        } else {
+            setErrors({...errors,countries:""})
+        }
+        if (state.difficulty ==='') {
+            setErrors({...errors, difficulty:'You must select a difficulty'})
+        } else {
+            setErrors({...errors, difficulty:""})
+        }
+        if (state.duration ==='') {
+            setErrors({...errors, duration:'You must select a duration'})
+        } else {
+            setErrors({...errors, duration:""})
+        }
+        if (state.season ==='') {
+            setErrors({...errors, season:'You must select a season'})
+        } else {
+            setErrors({...errors,season:""})
+        }
 
     }
 
-    
     const handleChange = (e) => {
         const property = e.target.name;
         const value = e.target.value;
@@ -47,34 +68,51 @@ const LeftPanel = ()=>{
 
     const handleCountries = (e)=> {
         e.preventDefault();
-        console.log(`valor ingresado: ${country}`);
+        var found = false
         for (let i = 0; i < countriesList.length; i++) {
-            // console.log(countriesList[i].id);
-            // console.log(countriesList[i].name)
             const compValue= country.toLowerCase()
             if (compValue === countriesList[i].name.toLowerCase()) {
-                console.log(countriesList[i].id);
-                setForm({...form, countries: [...form.countries,countriesList[i].id]});
-                setCountry("");
-                break;
+                found = true
+                var countryId = countriesList[i].id
+                var idsArray = form.countries
+                if (idsArray.indexOf(countryId) == -1) {
+                    setForm({...form, countries: [...form.countries, countriesList[i].id]});
+                    setCountriesNames([...countriesNames, {name:countriesList[i].name, flag:countriesList[i].flag}])
+                    setCountry("");
+                    break;
+                }else{
+                    alert('country already in list')
+                    setCountry('')
+                    break;
+                }
+                
             }
         } 
-        
+        if(!found) {
+            alert(`${country} does not exist`)
+            setCountry(''); 
+        }
     }
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        const response = axios.post('http://localhost:3001/activities',form)
-        .then(res=>alert(res))
+        console.log('submitting');
+        if (form.name !=='' && form.countries.length != 0 && form.difficulty!=='' && form.duration!=='' && form.season!=='') {
+            const response = axios.post('http://localhost:3001/activities',form)
+            .then(res=>alert(res))
+        } else{
+            alert('You must select or add all fields');
+            setCountriesNames([]);
+        }
+        
     }
-
     return(
         <div className={s.LeftPanel}>
 
             <img src={titleImg} alt="" className={s.titleImg}/>
 
            <div className={s.Form}>
-                <form action="" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     
                     <div className={s.inputBox}>
                         <div className={s.Input}>
@@ -104,6 +142,7 @@ const LeftPanel = ()=>{
                                 <option value="5" className={s.Label}>5</option>
                             </select>
                         </div>
+                        {errors.difficulty && <div className={s.errorMsg}>{errors.difficulty}</div>}
                     </div>
                     
                     <div className={s.inputBox}>
@@ -120,6 +159,7 @@ const LeftPanel = ()=>{
                                 placeholder='Hours...'
                             />
                         </div>
+                        {errors.duration && <div className={s.errorMsg}>{errors.duration}</div>}
                     </div>
 
                     <div className={s.inputBox}>
@@ -133,27 +173,28 @@ const LeftPanel = ()=>{
                                 <option value="Winter" className={s.Label}>Winter</option>
                             </select>
                         </div>
+                        {errors.season && <div className={s.errorMsg}>{errors.season}</div>}
                     </div>
 
                     <div className={s.InputCountries}>
-
-
                         <div className={s.Input}>
                             <label htmlFor="" className={s.Label}>Countries:  </label>
                             <input type="text" className={s.txtInput} value={country} name='country' onChange={handleChange}/>
                         </div>
                         <button className={s.addBtn} onClick={handleCountries} name='addDtn' value={country} >Add</button>
                     </div>
-
                     <div className={s.countriesPanel}>
-                       
+                       {
+                        countriesNames.map(country => (
+                            <div className={s.Country} key={country.name}>
+                                <img src={country.flag} alt="" className={s.countryFlag} />
+                                <p className={s.countryName}>{country.name}</p>
+                            </div>
+                        ))
+                       }
                     </div>
-                    {/* <img src={createBtn} alt="" className={s.createBtn}/> */}
-                    <button type='submit' >
-                        submit
+                    <button type='submit' className={s.createBtn}>
                     </button>
-                   
-
                 </form>
            </div>
         </div>

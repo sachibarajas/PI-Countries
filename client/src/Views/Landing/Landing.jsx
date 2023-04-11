@@ -9,7 +9,7 @@ const Landing = () => {
     return (
         <div className={s.landingContainer}>
 
-            <p className={s.presentation}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a augue vel ante pretium semper in vel dolor. Nam iaculis erat at enim scelerisque dictum. Aenean dui lacus, congue eget.</p>
+            <p className={s.presentation}> Welcome travelers to the App that helps you find the best places and memorable activities to live your next story to tell, enjoy the experience and say, !I'm going on an adventure!</p>
             
             <a href='http://localhost:3000/home'>
                 <img src={btnImg} alt="halla" className={s.startBtnImg}/>

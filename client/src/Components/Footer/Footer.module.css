@@ -32,12 +32,12 @@
     text-align: center;
     font-family: HelveticaLTStd-UltraComp;
     border-radius: 50%;
-    background-color: #808080;
+    background-color: white;
 }
 
 .Number:hover{
-    background-color: black;
-    color: #808080;
+    background-color: darkgray;
+    color: white;
 }
 
 .listItem{

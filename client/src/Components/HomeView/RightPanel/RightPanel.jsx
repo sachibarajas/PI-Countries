@@ -2,16 +2,14 @@ import s from './RightPanel.module.css';
 import NavBar from '../../NavBar/NavBar';
 import CountriesContainer from '../CountriesContainer/CountriesContainer';
 import Footer from '../../Footer/Footer';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { filterCountries } from '../../../redux/Actions/actions';
 
 const RightPanel =()=>{
-    const dispatch = useDispatch();
+    
     const countries = useSelector(state=>state.FilteredCountries);
-    useEffect(()=>{
-        dispatch(filterCountries());
-    },[])
+    
 
     // paginado
     const [currentPage, setCurrentPage] = useState(1);

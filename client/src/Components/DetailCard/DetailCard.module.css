@@ -90,6 +90,24 @@
     padding: 5px;
 }
 
+.backImg{
+    width: 70px
+}
+
+.backImg:hover{
+    box-shadow: 5px 5px 4px darkolivegreen;
+}
+
+.routeLabel{
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+    font-family: HelveticaLTStd-Cond;
+}
+
+.routeLabel:hover{
+    color: brown;
+}
 @font-face {
     font-family: LibreCaslonText-Italic;
     src: url('../../Assets/fonts/LibreCaslonText-Italic.ttf');
