@@ -7,7 +7,7 @@ const NavBar = ()=>{
     return(
         <div className={s.navContainer}>
             <Link to='/home'className={s.routeLabel}>Countries</Link>
-            <Link to='/createactivity' className={s.routeLabel}>Activities</Link>
+            <Link to='/activities' className={s.routeLabel}>Activities</Link>
             <Link to='/createactivity' className={s.routeLabel}>Create Activity</Link>
            <div className={s.socialMedia} >
                 <a href='https://github.com/sachibarajas/PI-Countries-main'>

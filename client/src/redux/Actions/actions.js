@@ -8,6 +8,7 @@ export const getCountries=()=>{
         const apiData = await axios.get(`${apiDir}/countries`);
         const countries = apiData.data.map(country=>{
             return{
+                id: country.id,
                 name: country.name,
                 flag: country.flag
             }

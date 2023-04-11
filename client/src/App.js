@@ -7,7 +7,7 @@ function App() {
     <div className="App"> 
       <Route exact path='/' component={Landing}/>
       <Route exact path="/home" component={Home}/>
-      <Route path ='/createactivity' component={Form}/>
+      <Route path ='/activities' component={Form}/>
       <Route path='/countries/:id' component={Detail}/>
       
     </div>
