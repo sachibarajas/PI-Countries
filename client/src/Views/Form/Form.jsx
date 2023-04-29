@@ -9,7 +9,7 @@ const Form = ()=>{
 
     useEffect(()=>{
         dispatch(getActivities());
-    },[])
+    },[dispatch])
     return(
         <div className={s.Form}>
             <LeftPanel/>

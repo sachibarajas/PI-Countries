@@ -12,7 +12,7 @@ const Home =()=>{
     useEffect(()=>{
         dispatch(getCountries());
         dispatch(getActivities());
-    },[])
+    },[dispatch])
 
 
     return(

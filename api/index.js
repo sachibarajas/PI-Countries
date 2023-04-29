@@ -23,9 +23,9 @@ const {fillDataBase} = require('./src/controllers/countriesController');
 const { activitiesInit } = require('./src/controllers/activitiesController.js');
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
-    // fillDataBase();
+    fillDataBase();
    
     console.log('%s listening on port 3001'); // eslint-disable-line no-console
   });

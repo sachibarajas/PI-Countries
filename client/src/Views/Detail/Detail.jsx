@@ -8,7 +8,7 @@ const Detail = () =>{
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getCountry(id));
-    },[])
+    },[dispatch])
     return(
         <DetailCard/>
     )
