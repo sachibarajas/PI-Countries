@@ -21,12 +21,13 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const {fillDataBase} = require('./src/controllers/countriesController');
 const { activitiesInit } = require('./src/controllers/activitiesController.js');
+const {swaggerDocs:V1SwaggerDocs} = require('./src/V1/swagger.js');
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(3001, () => {
-    fillDataBase();
-   
+    // fillDataBase();
     console.log('%s listening on port 3001'); // eslint-disable-line no-console
+    V1SwaggerDocs(server,3001)
   });
 });

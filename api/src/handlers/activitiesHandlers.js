@@ -27,7 +27,7 @@ const activitiesInitHandler = async (req,res) =>{
         await activitiesInit(activities);
         res.status(200).json(activities)
     } catch (error) {
-        res.status(400).json({error: error.message});
+        res.status(400).json({error: error.message}); 
     }
 }
 

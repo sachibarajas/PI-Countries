@@ -1,7 +1,6 @@
 const { Activity, Country } = require('../db');
 
 
-
 const createActivity = async (name,season,difficulty,duration, countries)=>{
     const newActivity = await Activity.create({name,season,difficulty,duration}); 
     countries.map(async (country) => {

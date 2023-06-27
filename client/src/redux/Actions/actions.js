@@ -17,9 +17,11 @@ export const getCountries=()=>{
     }
 }
 
-export const filterCountries=(direction)=>{
+export const filterCountries=(dir)=>{
     return async function(dispatch){
-        const apiData = await axios.get(`${apiDir}/countries?${direction}`);
+        
+        console.log(`${apiDir}/countries?${dir}`);
+        const apiData = await axios.get(`${apiDir}/countries?${dir}`);
         const countries = apiData.data;
         dispatch({type: FILTER_COUNTRIES, payload:countries})
     }

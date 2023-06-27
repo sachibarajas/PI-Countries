@@ -19,51 +19,60 @@ const Filters =()=>{
     })
 
     const handleChange = (e) => {
+        let dir = ''
         const property = e.target.name;
         const value = e.target.value;
         const type = e.target.type;
-        const id = e.target.id;
-        if (type==='checkbox') {
-            console.log(`id: ${id}`)
-            const element = document.getElementById(id)
-            console.log(`checkeado: ${element.checked}`);
-            if (element.checked) {
-                setFilters({...filters, [property]:[filters.continents.concat(value)]})
-            }else{
-                if (filters.continents.indexOf(value)>=0) {
-                    setFilters({...filters, [property]:[filters.continents.slice(
-                        filters.continents.indexOf(value),[filters.continents.indexOf(value)+1]
-                    )]})
-                }
-            } 
-        }
-            // validate({...form, [property]:value})
-            setFilters({...filters, [property]:value})
+        console.log(`cambia la propiedad: ${property} con el valor: ${value}`);
+        dir = validate({...filters, [property]:value});
+        setFilters({...filters, [property]:value});
+        
+        dispatch(filterCountries(dir));
+
     }
 
-    const handleSubmit = (e)=>{
-        e.preventDefault();
-        const dir = ''
+    const handleContinents = (e) => {
+        let dir = '';
+        const property = e.target.name;
+        const value = e.target.value;
+        const id = e.target.id;
+        const element = document.getElementById(id);
+        console.log(`valor: ${value}, checkeado: ${element.checked}`);
+        if (element.checked) {
+            dir = validate({...filters, [property]: filters.continents.concat([value])});
+            setFilters({...filters, [property]: filters.continents.concat([value])})
+        }else{
+            dir = validate({...filters, [property]: filters.continents.filter(continent => continent != value)});
+            setFilters({...filters, [property]: filters.continents.filter(continent => continent != value)} )
+        } 
+        
+        dispatch(filterCountries(dir));
+    }
+
+    const validate = (filters) => {
+        let dir = '';
         if (filters.order) {
-            dir=dir+`order=${filters.order}`
+            dir=dir+`order=${filters.order}&`
         }
         if (filters.orderBy) {
-            dir=dir+`&orderBy=${filters.orderBy}`
+            dir=dir+`orderBy=${filters.orderBy}&`
         }
         if (filters.name) {
-            dir=dir+`&name=${filters.name}`
+            dir=dir+`name=${filters.name}&`
         }
         if (filters.activity) {
-            dir=dir+`&activity=${filters.activity}`
+            dir=dir+`activity=${filters.activity}&`
         }
-        console.log(dir)
-
-        dispatch(filterCountries(dir))
+        if (filters.continents.length > 0){
+            let continentString = filters.continents.toString();
+            dir = dir+`continents=${continentString}&`;
+        }
+        return dir;
     }
 
     return(
         <div className={s.Filters}>
-        <form on onSubmit={handleSubmit}>
+        <form>
                 <p className= {s.label} >Search Country by Name</p>
                 <input 
                     type="text" 
@@ -82,7 +91,7 @@ const Filters =()=>{
                             id='Africa' 
                             value='Africa' 
                             name='continents' 
-                            onChange={handleChange}/>
+                            onChange={handleContinents}/>
                         Africa
                     </label>
                     <label className={s.label}>
@@ -91,7 +100,7 @@ const Filters =()=>{
                             id='Americas' 
                             value='Americas'
                             name='continents'
-                            onChange={handleChange} 
+                            onChange={handleContinents} 
                         />
                         Americas
                     </label>
@@ -101,7 +110,7 @@ const Filters =()=>{
                             id='Asia' 
                             value='Asia'
                             name='continents'
-                            onChange={handleChange}
+                            onChange={handleContinents}
                         />
                         Asia
                     </label>
@@ -111,7 +120,7 @@ const Filters =()=>{
                             id='Europe' 
                             value='Europe'
                             name='continents'
-                            onChange={handleChange}
+                            onChange={handleContinents}
                         />
                         Europe
                     </label>
@@ -121,7 +130,7 @@ const Filters =()=>{
                             id='Oceania' 
                             value='Oceania'
                             name='continents'
-                            onChange={handleChange}
+                            onChange={handleContinents}
                         />
                         Oceania
                     </label>
@@ -135,12 +144,13 @@ const Filters =()=>{
                     value={filters.activity}
                     onChange={handleChange}
                     >
-                    <option value="" disabled selected hidden className={s.Placeholder}>Activity</option>
+                    <option value="" selected className={s.Placeholder}>Activity</option>
                     {
                         activities.map(activity =>(
                             <option value={activity.name} >{activity.name}</option>
                         ))
                     }
+
                 </select>
                 <hr className={s.divLine}/>
                 
@@ -170,7 +180,6 @@ const Filters =()=>{
                     <option value="ASC" className={s.Label}>Ascending</option>
                 </select>
             </div>
-            <button type='submit'>submit</button>
         </form> 
             </div>
            

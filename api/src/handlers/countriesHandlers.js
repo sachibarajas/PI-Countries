@@ -3,9 +3,9 @@ const {getCountries, fillDataBase, getCountrybyId} = require('../controllers/cou
 const createAllCountries = async (req,res)=>{
     try {
           const countries = await fillDataBase();
-          res.status(200).json(countries)
+          return res.status(200).json(countries)
     } catch (error) {
-        res.status(400).json({error: error.message});
+        return res.status(404).send({"error":error})
     }
 }
 

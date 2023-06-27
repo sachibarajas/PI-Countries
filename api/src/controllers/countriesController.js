@@ -26,7 +26,7 @@ const cleanArray = (array)=>
 const queryCreator = async (name, continents, activity)=>{
     let query = {};
     if (continents!== 'all') {
-        const arrContinents = continents.split(' ')
+        const arrContinents = continents.split(',')
         query = {
             ...query,
             continent:{
